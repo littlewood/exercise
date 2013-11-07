@@ -1,0 +1,75 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>树形菜单</title>
+		<style type="text/css">
+			ul,li {
+				list-style:none;
+				padding:0;
+				margin:0;
+			}
+			
+			
+			#tree ul {
+				padding-left:13px;
+			}
+			
+			li span{
+			
+				padding-left:15px;
+			}
+			
+			.ss {
+				background:url(img/tree.gif) no-repeat ;
+			}
+			
+			.op {
+				background:url(img/tree.gif) no-repeat 0 -13px;
+			}
+			
+			li.ss ul {
+				display:none;
+			}
+			
+			.op ul {
+				display:block;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="tree">
+			<li class="ss"><span>你好</span>
+				<ul>
+					<li class="ss"><span>haha</span>
+						<ul>
+							<li><span>lele</span></li>
+							<li><span>nana</span></li>
+						</ul>
+					</li>
+					<li><span>heihei</span></li>
+				</ul>
+			</li>
+			
+			<li> <span>你好</span> </li>
+			
+			<li> <span>你好</span> </li>
+			
+			<li> <span>你好</span> </li>
+		</ul>
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript">
+			var $tree = $("#tree");
+			$tree.on("click","li.ss>span,li.op>span",function(){
+				var $this = $(this);
+				var $pa = $this.parent("li");
+				if($pa.hasClass("ss")) {
+					$pa.removeClass("ss").addClass("op");
+				} else {
+					$pa.removeClass("op").addClass("ss");
+				}
+			});
+			
+
+		</script>
+	</body>
+</html>
