@@ -1,0 +1,89 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>回到顶部</title>
+		<style type="text/css">
+			html {
+				 _text-overflow:ellipsis;  //IE6下防抖动
+			}
+			
+			body {
+				margin:0;
+				padding:0;
+				font-size:12px;
+				font-family:arial,simsun,microsoftYahei;
+			}
+			
+			.main {
+				height:2000px;
+			}
+			
+			#returnTop {
+				display:block;
+				width:12px;
+				right:10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			
+		</div>
+		<a href="javascript:void(0)" id="returnTop">返回顶部</a>
+		<script type="text/javascript">
+			function returnTop() {
+				var btn = document.getElementById("returnTop");
+				var bot = 20;
+				var flag = checkBrowserVersion();
+				var ob = document.documentElement.scrollTop ? document.documentElement : document.body ;
+				function checkBrowserVersion() {
+					var type = navigator.userAgent.toLowerCase();
+					var version = type.indexOf("msie")>-1 && parseInt(type.replace(/.*msie /,""));
+					return version && version <= 6 ? true : false;
+				}
+				function setStyle() {
+					btn.style.display = "none";
+					if(flag){
+						btn.style.position = "absolute";
+					} else {
+						btn.style.position = "fixed";
+						btn.style.bottom = bot +"px" ; 
+					}
+				}
+				window.onscroll = function () {
+					//ob = document.documentElement.scrollTop ? document.documentElement : document.body ;
+					var offsetTop = parseInt(document.documentElement.scrollTop+document.body.scrollTop);
+					
+							console.log(ob.scrollTop);
+					if(offsetTop>document.documentElement.clientHeight *0.6){
+						btn.style.display = "block";
+					} else {
+						btn.style.display = "none";
+					} 
+					if(flag) {		
+						btn.style.top =  ob.scrollTop + ob.clientHeight - btn.clientHeight - bot +"px";
+					}
+				};
+				btn.onclick = function (){
+					//ob = document.documentElement.scrollTop ? document.documentElement : document.body ;
+					var offsetTop = parseInt(ob.scrollTop);
+					console.log(ob);
+					ob.scrollTop = 100;
+					offsetTop = 100;
+					if(offsetTop>0){
+						if(flag){
+							ob.scrollTop = offsetTop-30;
+						}else {
+							ob.scrollTop = offsetTop-20;
+							
+							console.log(ob.scrollTop);
+						}
+						setTimeout(arguments.callee,10);
+					}
+				}
+				setStyle();
+			}
+			returnTop();
+		</script>
+	</body>
+</html>

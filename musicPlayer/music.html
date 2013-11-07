@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+		<title>小瓜的播放器~~~~yooooooo~~~~</title>
+		<style>
+			body {
+				padding:0;
+				margin:0;
+				font-size:12px;
+			}
+			
+			ul,li,ol {
+				list-style:none;
+			}
+			
+			div,p,ul,ol,li,h1,h2,h3,h4,h5{
+				padding:0;
+				margin:0;
+			}
+			
+			.clear {
+				font-size:0;
+				clear:both;
+			}
+			
+			.top {
+				height:50px;
+				
+				padding-left:50px;
+				background:#5f5f5f;
+			}
+			
+			.top h1 {
+				font-size:18px;
+				padding-top:10px;
+				line-height:30px;
+				color:#fff;
+			}
+			
+			.bot {
+				position:fixed;
+				bottom:0;
+				height:50px;
+				left:0;
+				right:0;
+				background:#5f5f5f;
+			}
+			
+			.playlistpart {
+				width:200px;
+				position:fixed;
+				left:0;
+				top:50px;
+				bottom:50px;
+				line-height:26px;
+				overflow:auto;
+				background:#f8f8f8;
+			}
+			
+			/*========歌词部分 start =====*/
+			.lyrics {
+				width:250px;
+				position:fixed;
+				right:0;
+				top:50px;
+				bottom:50px;
+			}
+			
+			#lrcPanel {
+				padding:10px;
+				position:relative;
+			}
+			
+			#lrc li {
+				line-height:26px;
+			}
+			
+			#lrc{
+				overflow:hidden;
+				position:absolute;
+				top:0;
+			}
+			
+			#lrc .on {
+				color:#ff0000;
+			}
+			/*========歌词部分 end =====*/
+			
+			
+			.musicPart {
+				position:fixed;
+				top:50px;
+				left:200px;
+				right:290px;
+				bottom:50px;
+				overflow:auto;
+			}
+			
+			.main li {
+				cursor:pointer;
+			}
+			
+			#playList{
+				margin:10px;
+			}
+			
+			#playList li {
+				padding-left:5px;
+			}
+			
+			#playList .on {
+				font-weight:bold;
+				background:#c6fff6;
+			}
+
+			#musicHeader {
+				font-weight:bold;
+			}
+			
+			#musicHeader li,#musicList li{
+				line-height:26px;
+				padding-left:15px;
+			}
+			
+			#musicList .on {
+				background:#c6fff6;
+			}
+			
+			/*======播放器样式 start=====*/
+			#player {
+				//display:none;
+			}
+			#music {
+				width:100%;
+				color:#fff;
+				
+			}
+			.play-btn li {
+				float:left;
+				margin:10px;
+				cursor:pointer;
+			}
+			
+			.play-mode li {
+				float:left;
+				margin:10px;
+				cursor:pointer;
+			}
+			
+			.play-mode .on {
+				font-weight:bold;
+			}
+			
+			#jindu,#totalTime {
+				float:left;
+				width:30px;
+				height:20px;
+			}
+			/*======播放器样式 end=====*/
+		</style>
+	</head>
+	<body>
+		<div class="top">
+			<h1>正在播放<span class="musicTitle"></span></h1>
+		</div>
+		<div class="main">
+			<div class="playlistpart">
+				<ul id="playList">
+				</ul>
+			</div>
+			<div class="lyrics">
+				<div class="lrcPanel">
+					<ul id="lrc">
+					
+					</ul>
+				</div>
+			</div>
+			<div class="musicPart">
+				<div id="musicHeader">
+					<ul>
+						<li>歌曲</li>	
+					</ul>
+				</div>
+				<ul id="musicList">
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="bot">
+			<div id="music">
+				<div>
+					<ul class="play-btn">
+						<li>上一首</li>
+						<li>播放</li>
+						<li>下一首</li>
+					</ul>
+					
+					<ul class="play-mode">
+						<li>默认</li>
+						<li>单曲循环</li>
+						<li>列表循环</li>
+					</ul>
+					
+					<span id="jindu">1</span> / <span id="totalTime"></span>
+				</div>
+			</div>
+			<div id="player"><object ID="nsPlayer"></object></div>
+		</div>
+		<script src="http://s2.ppsimg.com/t_images/t2/core/js/jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="musicPlayer.js"></script>
+	</body>
+</html>
